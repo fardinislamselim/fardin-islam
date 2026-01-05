@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { FaCode, FaDraftingCompass, FaFutbol, FaGamepad, FaGraduationCap, FaPalette } from 'react-icons/fa';
+import { FaCode, FaDownload, FaDraftingCompass, FaGraduationCap, FaPalette } from 'react-icons/fa';
+import resume from '../assets/Md-Fardin-Islam-Selim.pdf';
 
 const About = () => {
     const infoCards = [
@@ -26,9 +27,15 @@ const About = () => {
     return (
         <div id='about' name="about" className="w-full min-h-screen bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-black py-20">
             <div className="max-w-screen-xl p-6 mx-auto flex flex-col justify-center w-full h-full">
-                <div className="pb-12 text-center md:text-left">
+                <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                    className="pb-12 text-center md:text-left"
+                >
                     <p className="text-4xl font-black inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100 uppercase tracking-widest">About Me</p>
-                </div>
+                </motion.div>
 
                 <motion.div
                      initial={{ opacity: 0, y: 30 }}
@@ -105,28 +112,31 @@ const About = () => {
                             </div>
                         </div>
 
-                        <div className="flex flex-col justify-center items-center lg:items-start gap-8">
-                            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                                <span className="flex items-center gap-2 px-5 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-bold border border-blue-100 dark:border-blue-800/50">
-                                    <FaFutbol /> Football
-                                </span>
-                                <span className="flex items-center gap-2 px-5 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-bold border border-blue-100 dark:border-blue-800/50">
-                                    <FaPalette /> Painting
-                                </span>
-                                <span className="flex items-center gap-2 px-5 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-bold border border-blue-100 dark:border-blue-800/50">
-                                    <FaGamepad /> Gaming
-                                </span>
+                        <div className="flex flex-col justify-center items-center lg:items-start gap-10">
+                            <div className="space-y-4">
+                                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">Ready to work together?</h3>
+                                <p className="text-gray-600 dark:text-gray-400 max-w-md">
+                                    I'm currently looking for new opportunities. My resume contains all the technical details of my journey and expertise.
+                                </p>
                             </div>
 
                             <a 
-                                href="../assets/resume-of-fardin-islam.pdf"
-                                download={true}
+                                href={resume}
+                                download="Md-Fardin-Islam-Selim-Resume.pdf"
                                 target='_blank'
                                 rel="noreferrer"
-                                className="group relative px-10 py-5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-all shadow-2xl active:scale-95"
+                                className="group relative"
                             >
-                                <span className="relative z-10">Download My Resume</span>
-                                <div className="absolute inset-0 bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 rounded-2xl opacity-10"></div>
+                                {/* Glow Effect Background */}
+                                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                                
+                                <div className="relative flex items-center gap-3 px-10 py-5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-2xl font-black uppercase tracking-widest hover:scale-[1.02] transition-all shadow-2xl active:scale-95 overflow-hidden">
+                                    <FaDownload className="group-hover:translate-y-1 transition-transform duration-300" />
+                                    <span>Download My Resume</span>
+                                    
+                                    {/* Shining effect on hover */}
+                                    <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/20 opacity-40 group-hover:animate-shine" />
+                                </div>
                             </a>
                         </div>
                     </div>

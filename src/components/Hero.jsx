@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
+import { FaDownload } from 'react-icons/fa';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import resume from '../assets/Md-Fardin-Islam-Selim.pdf';
 import profile from '../assets/profile.jpeg';
 
 const Hero = () => {
@@ -36,6 +38,22 @@ const Hero = () => {
                   <MdOutlineKeyboardArrowRight size={24} className="relative z-10 group-hover:translate-x-1 transition-transform" />
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                 </a>
+
+                <a 
+                    href={resume}
+                    download="Md-Fardin-Islam-Selim-Resume.pdf"
+                    target='_blank'
+                    rel="noreferrer"
+                    className="group relative"
+                >
+                    <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <div className="relative flex items-center gap-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-bold hover:scale-[1.02] transition-all shadow-xl active:scale-95 overflow-hidden">
+                        <FaDownload className="group-hover:translate-y-1 transition-transform duration-300" />
+                        <span>Resume</span>
+                        <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/20 opacity-40 group-hover:animate-shine" />
+                    </div>
+                </a>
+
                  <a
                   href="#contact"
                   className="px-8 py-4 flex items-center justify-center rounded-full border-2 border-gray-200 dark:border-gray-800 text-gray-900 dark:text-white font-bold hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-300 hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105"

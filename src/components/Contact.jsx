@@ -1,10 +1,11 @@
+import emailjs from '@emailjs/browser';
 import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
 const Contact = () => {
     const form = useRef();
-    const [status, setStatus] = useState(null);
+    const [status, setStatus] = useState(null); // 'sending' | 'success' | 'error' | null
 
     const contactInfo = [
         {
@@ -18,23 +19,37 @@ const Contact = () => {
             id: 2,
             icon: <FaPhone className="text-blue-600 dark:text-blue-400" size={24} />,
             title: "Call Me",
-            value: "+880 1234 567890",
-            link: "tel:+8801234567890"
+            value: "+880 1836-398363",
+            link: "tel:+8801836398363"
         },
         {
             id: 3,
-            icon: <FaMapMarkerAlt className="text-blue-600 dark:text-blue-400" size={24} />,
-            title: "Location",
-            value: "Dhaka, Bangladesh",
-            link: "https://maps.app.goo.gl/..."
+            icon: <FaWhatsapp className="text-blue-600 dark:text-blue-400" size={24} />,
+            title: "WhatsApp",
+            value: "+880 1836-398363",
+            link: "https://wa.me/8801836398363"
         }
     ];
 
     const sendEmail = (e) => {
         e.preventDefault();
-        setStatus('success');
-        setTimeout(() => setStatus(null), 3000);
-        e.target.reset();
+        setStatus('sending');
+
+        // IMPORTANT: Replace these with your actual IDs from EmailJS
+        const SERVICE_ID = "service_myqnlln"; // Replace with your Service ID
+        const TEMPLATE_ID = "template_x9ehwp7"; // Replace with your Template ID
+        const PUBLIC_KEY = "JRO3fTa2bwPLoWZot"; // Replace with your Public Key
+
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+            .then((result) => {
+                setStatus('success');
+                e.target.reset();
+                setTimeout(() => setStatus(null), 5000);
+            }, (error) => {
+                setStatus('error');
+                setTimeout(() => setStatus(null), 5000);
+                console.error("EmailJS Error:", error);
+            });
     };
 
     return (
@@ -65,7 +80,7 @@ const Contact = () => {
                     <a 
                         key={id}
                         href={link}
-                        target={id === 3 ? "_blank" : "_self"}
+                        target="_blank"
                         rel="noreferrer"
                         className="flex items-center gap-6 p-6 bg-white dark:bg-gray-900 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-black/50 border border-gray-100 dark:border-gray-800 hover:scale-[1.02] transition-all group"
                     >
@@ -123,8 +138,13 @@ const Contact = () => {
                         ></textarea>
                     </div>
 
-                    <button className="w-full group relative py-5 bg-blue-600 dark:bg-blue-500 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20 active:scale-95 flex items-center justify-center gap-3 overflow-hidden">
-                        <span className="relative z-10">Send Message</span>
+                    <button 
+                        disabled={status === 'sending'}
+                        className={`w-full group relative py-5 ${status === 'sending' ? 'bg-gray-400' : 'bg-blue-600 dark:bg-blue-500'} text-white rounded-2xl font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20 active:scale-95 flex items-center justify-center gap-3 overflow-hidden`}
+                    >
+                        <span className="relative z-10">
+                            {status === 'sending' ? 'Sending...' : 'Send Message'}
+                        </span>
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                     </button>
 
@@ -135,6 +155,16 @@ const Contact = () => {
                            className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800/50 rounded-2xl text-green-600 dark:text-green-400 text-center font-bold"
                         >
                             Message Delivered Successfully!
+                        </motion.div>
+                    )}
+
+                    {status === "error" && (
+                        <motion.div 
+                           initial={{ opacity: 0, y: 10 }}
+                           animate={{ opacity: 1, y: 0 }}
+                           className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-800/50 rounded-2xl text-red-600 dark:text-red-400 text-center font-bold"
+                        >
+                            Failed to send. Please try again or use direct email.
                         </motion.div>
                     )}
                 </form>
