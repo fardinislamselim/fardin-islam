@@ -35,7 +35,7 @@ const Contact = () => {
       >
         <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
           <div className="pb-8">
-            <p className="text-4xl font-bold inline border-b-4 border-gray-500 text-gray-900 dark:text-gray-100">
+            <p className="text-4xl font-bold inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100">
               Contact
             </p>
             <p className="py-6 text-gray-700 dark:text-gray-300">
@@ -57,24 +57,24 @@ const Contact = () => {
                 name="user_name"
                 placeholder="Enter your name"
                 required
-                className="p-3 bg-transparent border-2 border-gray-300 rounded-md text-gray-900 dark:text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                className="p-3 bg-transparent border-2 border-gray-300 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-cyan-500 transition-colors"
               />
               <input
                 type="email"
                 name="user_email"
                 placeholder="Enter your email"
                 required
-                className="my-4 p-3 bg-transparent border-2 border-gray-300 rounded-md text-gray-900 dark:text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                className="my-4 p-3 bg-transparent border-2 border-gray-300 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-cyan-500 transition-colors"
               />
               <textarea
                 name="message"
                 placeholder="Enter your message"
                 rows="10"
                 required
-                className="p-3 bg-transparent border-2 border-gray-300 rounded-md text-gray-900 dark:text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                className="p-3 bg-transparent border-2 border-gray-300 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-cyan-500 transition-colors"
               ></textarea>
 
-              <button className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300 shadow-md shadow-cyan-500/50 font-bold">
+              <button className="text-white bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-cyan-500 dark:to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300 shadow-md shadow-blue-500/30 dark:shadow-cyan-500/50 font-bold">
                 Let's Talk
               </button>
 

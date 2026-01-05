@@ -5,7 +5,7 @@ const About = () => {
         <div id='about' name="about" className="w-full min-h-screen bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-black text-white">
             <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
                 <div className="pb-8">
-                    <p className="text-4xl font-bold inline border-b-4 border-gray-500 text-gray-900 dark:text-gray-100">About</p>
+                    <p className="text-4xl font-bold inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100">About</p>
                 </div>
 
                 <motion.div
@@ -29,7 +29,7 @@ const About = () => {
 
                     <div className='mt-10'>
                         <h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-4'>Education</h3>
-                        <div className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-blue-500'>
+                        <div className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-blue-600 dark:border-blue-400'>
                             <h4 className='text-xl font-bold text-gray-800 dark:text-white'>Diploma in Engineering</h4>
                             <p className='text-gray-600 dark:text-gray-400'>Computer Science and Technology</p>
                             <p className='text-gray-500 text-sm mt-2'>2023 - Present</p>
@@ -42,7 +42,7 @@ const About = () => {
                             download={true}
                             target='_blank'
                             rel="noreferrer"
-                            className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300 shadow-md inline-block"
+                            className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 shadow-md inline-block font-semibold"
                         >
                             Download Resume
                         </a>

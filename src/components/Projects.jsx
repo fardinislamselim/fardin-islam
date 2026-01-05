@@ -42,7 +42,7 @@ const Projects = () => {
     >
       <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
         <div className="pb-8">
-          <p className="text-4xl font-bold inline border-b-4 border-gray-500 text-gray-900 dark:text-gray-100">
+          <p className="text-4xl font-bold inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100">
             Projects
           </p>
           <p className="py-6 text-gray-700 dark:text-gray-300">
@@ -76,7 +76,7 @@ const Projects = () => {
                     {techStack.map((tech, i) => (
                       <span
                         key={i}
-                        className="text-xs font-semibold px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md"
+                        className="text-xs font-semibold px-2 py-1 bg-blue-50 dark:bg-gray-800 text-blue-700 dark:text-blue-300 rounded-md border border-blue-100 dark:border-gray-700"
                       >
                         {tech}
                       </span>
@@ -85,13 +85,13 @@ const Projects = () => {
                   <div className="flex items-center justify-center gap-4 mt-auto">
                     <button
                       onClick={() => window.open(demo, "_blank")}
-                      className="w-1/2 px-6 py-2 m-1 duration-200 hover:scale-105 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-md font-medium shadow-md"
+                      className="w-1/2 px-6 py-2 m-1 duration-200 hover:scale-105 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-cyan-500 dark:to-blue-500 text-white rounded-md font-medium shadow-md"
                     >
                       Demo
                     </button>
                     <button
                       onClick={() => window.open(code, "_blank")}
-                      className="w-1/2 px-6 py-2 m-1 duration-200 hover:scale-105 border border-gray-500 text-gray-900 dark:text-white rounded-md font-medium hover:bg-gray-100 dark:hover:bg-gray-800"
+                      className="w-1/2 px-6 py-2 m-1 duration-200 hover:scale-105 border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-md font-medium hover:bg-blue-50 dark:hover:bg-blue-900/20"
                     >
                       Code
                     </button>

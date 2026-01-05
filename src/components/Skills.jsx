@@ -45,7 +45,7 @@ const Skills = () => {
         <div id="skills" name="skills" className="w-full min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-gray-800">
             <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full text-white">
                 <div>
-                    <p className="text-4xl font-bold border-b-4 border-gray-500 p-2 inline text-gray-900 dark:text-gray-100">Skills</p>
+                    <p className="text-4xl font-bold border-b-4 border-blue-600 dark:border-blue-400 p-2 inline text-gray-900 dark:text-gray-100">Skills</p>
                     <p className="py-6 text-gray-700 dark:text-gray-300">These are the technologies I've worked with</p>
                 </div>
 
