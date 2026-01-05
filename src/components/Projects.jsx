@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
 
 const Projects = () => {
   const portfolios = [
@@ -14,10 +15,10 @@ const Projects = () => {
     },
     {
       id: 2,
-      title: "paws-comfort",
+      title: "Paws Comfort",
       src: "https://i.ibb.co.com/hF7FnxFF/Screenshot-2025-12-06-144016.png",
       description:
-        "WarmPaws is a modern, fully responsive SPA that provides pet owners with essential winter care resources and services in a warm, user-friendly experience.",
+        "WarmPaws is a modern, fully responsive SPA that provides pet owners with essential winter care resources.",
       techStack: ["React", "Tailwind", "Firebase", "React Router"],
       demo: "https://paws-comfort.netlify.app/",
       code: "https://github.com/fardinislamselim/paws-comfort",
@@ -34,64 +35,94 @@ const Projects = () => {
     },
   ];
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
     <div
       id="projects"
       name="projects"
-      className="w-full text-white md:min-h-screen bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-black"
+      className="w-full min-h-screen bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-black py-20 px-6"
     >
-      <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
-        <div className="pb-8">
-          <p className="text-4xl font-bold inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100">
+      <div className="max-w-screen-xl mx-auto flex flex-col justify-center w-full h-full">
+        <div className="pb-12 text-center md:text-left">
+          <p className="text-4xl font-black inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100 uppercase tracking-widest">
             Projects
           </p>
-          <p className="py-6 text-gray-700 dark:text-gray-300">
-            Check out some of my recent work
+          <p className="py-6 text-gray-600 dark:text-gray-400 text-lg">
+            A small selection of my recent works
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 px-12 sm:px-0">
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"
+        >
           {portfolios.map(
             ({ id, src, title, description, techStack, demo, code }) => (
               <motion.div
                 key={id}
-                className="shadow-md shadow-gray-600 rounded-lg duration-200 hover:scale-105 bg-white dark:bg-gray-900 flex flex-col justify-between"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                variants={item}
+                whileHover={{ y: -10 }}
+                className="group relative bg-white dark:bg-gray-900 rounded-[2rem] overflow-hidden shadow-2xl dark:shadow-black/40 border border-gray-100 dark:border-gray-800 flex flex-col transition-all duration-300"
               >
-                <img
-                  src={src}
-                  alt={title}
-                  className="rounded-t-md duration-200 hover:opacity-80 w-full h-48 object-cover"
-                />
-                <div className="p-4 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                {/* Image Container */}
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={src}
+                    alt={title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                     <a href={demo} target="_blank" rel="noreferrer" className="p-3 bg-white text-gray-900 rounded-full hover:scale-110 transition-transform shadow-lg"><FaExternalLinkAlt size={18} /></a>
+                     <a href={code} target="_blank" rel="noreferrer" className="p-3 bg-white text-gray-900 rounded-full hover:scale-110 transition-transform shadow-lg"><FaGithub size={20} /></a>
+                  </div>
+                </div>
+
+                <div className="p-6 flex flex-col flex-grow">
+                  <h3 className="text-xl font-black text-gray-900 dark:text-white uppercase tracking-tight mb-2">
                     {title}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 flex-grow">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-6 leading-relaxed flex-grow">
                     {description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {techStack.map((tech, i) => (
                       <span
                         key={i}
-                        className="text-xs font-semibold px-2 py-1 bg-blue-50 dark:bg-gray-800 text-blue-700 dark:text-blue-300 rounded-md border border-blue-100 dark:border-gray-700"
+                        className="text-[10px] font-black uppercase tracking-widest px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-full border border-blue-100 dark:border-blue-900/50"
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <div className="flex items-center justify-center gap-4 mt-auto">
+
+                  <div className="grid grid-cols-2 gap-3 pt-4 border-t border-gray-100 dark:border-gray-800">
                     <button
                       onClick={() => window.open(demo, "_blank")}
-                      className="w-1/2 px-6 py-2 m-1 duration-200 hover:scale-105 bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-cyan-500 dark:to-blue-500 text-white rounded-md font-medium shadow-md"
+                      className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 dark:bg-blue-500 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition-all shadow-lg active:scale-95 shadow-blue-500/20"
                     >
                       Demo
                     </button>
                     <button
                       onClick={() => window.open(code, "_blank")}
-                      className="w-1/2 px-6 py-2 m-1 duration-200 hover:scale-105 border border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-md font-medium hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                      className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-gray-100 dark:border-gray-800 text-gray-800 dark:text-gray-200 rounded-xl font-bold text-sm hover:border-blue-600 dark:hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all active:scale-95"
                     >
                       Code
                     </button>
@@ -100,7 +131,7 @@ const Projects = () => {
               </motion.div>
             )
           )}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

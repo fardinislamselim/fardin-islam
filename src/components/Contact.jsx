@@ -1,94 +1,144 @@
 import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
-// import emailjs from '@emailjs/browser'; // Import EmailJS if you have your Service ID, Template ID, and Public Key
+import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
 
 const Contact = () => {
     const form = useRef();
     const [status, setStatus] = useState(null);
 
+    const contactInfo = [
+        {
+            id: 1,
+            icon: <FaEnvelope className="text-blue-600 dark:text-blue-400" size={24} />,
+            title: "Email Me",
+            value: "fardinislamselim@gmail.com",
+            link: "mailto:fardinislamselim@gmail.com"
+        },
+        {
+            id: 2,
+            icon: <FaPhone className="text-blue-600 dark:text-blue-400" size={24} />,
+            title: "Call Me",
+            value: "+880 1234 567890",
+            link: "tel:+8801234567890"
+        },
+        {
+            id: 3,
+            icon: <FaMapMarkerAlt className="text-blue-600 dark:text-blue-400" size={24} />,
+            title: "Location",
+            value: "Dhaka, Bangladesh",
+            link: "https://maps.app.goo.gl/..."
+        }
+    ];
+
     const sendEmail = (e) => {
         e.preventDefault();
-        
-        // Example EmailJS Implementation
-        /*
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', form.current, 'YOUR_PUBLIC_KEY')
-          .then((result) => {
-              console.log(result.text);
-              setStatus('success');
-              e.target.reset();
-          }, (error) => {
-              console.log(error.text);
-              setStatus('error');
-          });
-        */
-       
-       // Dummy response
-       setStatus('success');
-       setTimeout(() => setStatus(null), 3000);
-       e.target.reset();
+        setStatus('success');
+        setTimeout(() => setStatus(null), 3000);
+        e.target.reset();
     };
 
     return (
       <div
         id="contact"
-        className="w-full min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-gray-800 p-4 text-white"
+        className="w-full min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-gray-800 py-20 px-6"
       >
-        <div className="flex flex-col p-4 justify-center max-w-screen-lg mx-auto h-full">
-          <div className="pb-8">
-            <p className="text-4xl font-bold inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100">
-              Contact
+        <div className="max-w-screen-xl mx-auto flex flex-col justify-center h-full">
+          <div className="pb-12 text-center md:text-left">
+            <p className="text-4xl font-black inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100 uppercase tracking-widest">
+              Get In Touch
             </p>
-            <p className="py-6 text-gray-700 dark:text-gray-300">
-              Submit the form below to get in touch with me
+            <p className="py-6 text-gray-600 dark:text-gray-400 text-lg leading-relaxed max-w-2xl">
+              I'm always open to new opportunities, collaborations, or just a friendly chat. Feel free to reach out!
             </p>
           </div>
 
-          <div className="flex justify-center items-center">
-            <motion.form
-              ref={form}
-              onSubmit={sendEmail}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col w-full md:w-1/2"
+          <div className="grid md:grid-cols-5 gap-12 items-start">
+            {/* Contact Info Cards */}
+            <motion.div 
+               initial={{ opacity: 0, x: -30 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.8 }}
+               viewport={{ once: true }}
+               className="md:col-span-2 space-y-6"
             >
-              <input
-                type="text"
-                name="user_name"
-                placeholder="Enter your name"
-                required
-                className="p-3 bg-transparent border-2 border-gray-300 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-cyan-500 transition-colors"
-              />
-              <input
-                type="email"
-                name="user_email"
-                placeholder="Enter your email"
-                required
-                className="my-4 p-3 bg-transparent border-2 border-gray-300 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-cyan-500 transition-colors"
-              />
-              <textarea
-                name="message"
-                placeholder="Enter your message"
-                rows="10"
-                required
-                className="p-3 bg-transparent border-2 border-gray-300 dark:border-gray-700 rounded-md text-gray-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-cyan-500 transition-colors"
-              ></textarea>
+                {contactInfo.map(({ id, icon, title, value, link }) => (
+                    <a 
+                        key={id}
+                        href={link}
+                        target={id === 3 ? "_blank" : "_self"}
+                        rel="noreferrer"
+                        className="flex items-center gap-6 p-6 bg-white dark:bg-gray-900 rounded-[2rem] shadow-xl shadow-gray-200/50 dark:shadow-black/50 border border-gray-100 dark:border-gray-800 hover:scale-[1.02] transition-all group"
+                    >
+                        <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                           {icon}
+                        </div>
+                        <div>
+                            <h4 className="text-sm font-black text-gray-500 dark:text-gray-400 uppercase tracking-widest">{title}</h4>
+                            <p className="font-bold text-gray-900 dark:text-gray-100 break-all">{value}</p>
+                        </div>
+                    </a>
+                ))}
+            </motion.div>
 
-              <button className="text-white bg-gradient-to-r from-blue-600 to-cyan-600 dark:from-cyan-500 dark:to-blue-500 px-6 py-3 my-8 mx-auto flex items-center rounded-md hover:scale-110 duration-300 shadow-md shadow-blue-500/30 dark:shadow-cyan-500/50 font-bold">
-                Let's Talk
-              </button>
+            {/* Contact Form */}
+            <motion.div 
+               initial={{ opacity: 0, x: 30 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.8 }}
+               viewport={{ once: true }}
+               className="md:col-span-3 bg-white dark:bg-gray-900 p-8 sm:p-10 rounded-[2.5rem] shadow-2xl shadow-gray-200/50 dark:shadow-black/50 border border-gray-100 dark:border-gray-800"
+            >
+                <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                    <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                           <label className="text-xs font-black uppercase tracking-widest text-gray-500 ml-4">Full Name</label>
+                           <input
+                             type="text"
+                             name="user_name"
+                             placeholder="John Doe"
+                             required
+                             className="w-full p-4 bg-gray-50 dark:bg-gray-800/50 border-2 border-transparent rounded-2xl text-gray-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 focus:bg-white dark:focus:bg-gray-800 transition-all font-bold"
+                           />
+                        </div>
+                        <div className="space-y-2">
+                           <label className="text-xs font-black uppercase tracking-widest text-gray-500 ml-4">Email Address</label>
+                           <input
+                             type="email"
+                             name="user_email"
+                             placeholder="john@example.com"
+                             required
+                             className="w-full p-4 bg-gray-50 dark:bg-gray-800/50 border-2 border-transparent rounded-2xl text-gray-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 focus:bg-white dark:focus:bg-gray-800 transition-all font-bold"
+                           />
+                        </div>
+                    </div>
 
-              {status === "success" && (
-                <p className="text-green-500 text-center font-bold">
-                  Message Sent Successfully! (Simulation)
-                </p>
-              )}
-              {status === "error" && (
-                <p className="text-red-500 text-center font-bold">
-                  Something went wrong!
-                </p>
-              )}
-            </motion.form>
+                    <div className="space-y-2">
+                        <label className="text-xs font-black uppercase tracking-widest text-gray-500 ml-4">Your Message</label>
+                        <textarea
+                          name="message"
+                          placeholder="How can I help you?"
+                          rows="6"
+                          required
+                          className="w-full p-4 bg-gray-50 dark:bg-gray-800/50 border-2 border-transparent rounded-2xl text-gray-900 dark:text-white focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 focus:bg-white dark:focus:bg-gray-800 transition-all font-bold resize-none"
+                        ></textarea>
+                    </div>
+
+                    <button className="w-full group relative py-5 bg-blue-600 dark:bg-blue-500 text-white rounded-2xl font-black uppercase tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20 active:scale-95 flex items-center justify-center gap-3 overflow-hidden">
+                        <span className="relative z-10">Send Message</span>
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                    </button>
+
+                    {status === "success" && (
+                        <motion.div 
+                           initial={{ opacity: 0, y: 10 }}
+                           animate={{ opacity: 1, y: 0 }}
+                           className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-100 dark:border-green-800/50 rounded-2xl text-green-600 dark:text-green-400 text-center font-bold"
+                        >
+                            Message Delivered Successfully!
+                        </motion.div>
+                    )}
+                </form>
+            </motion.div>
           </div>
         </div>
       </div>

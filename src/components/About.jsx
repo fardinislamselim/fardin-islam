@@ -1,51 +1,116 @@
 import { motion } from 'framer-motion';
+import { FaCode, FaDraftingCompass, FaFutbol, FaGamepad, FaGraduationCap, FaPalette } from 'react-icons/fa';
 
 const About = () => {
+    const infoCards = [
+        {
+            id: 1,
+            icon: <FaCode className="text-blue-600 dark:text-blue-400" size={24} />,
+            title: "Programming Journey",
+            content: "My coding odyssey began with curiosity. From tweaking Tumblr themes to mastering the MERN stack, I've spent countless hours turning complex problems into elegant, functional code. Every bug fixed was a lesson learned."
+        },
+        {
+            id: 2,
+            icon: <FaDraftingCompass className="text-blue-600 dark:text-blue-400" size={20} />,
+            title: "What I Love to Build",
+            content: "I thrive on building seamless digital experiences. I enjoy working on the full stack—from designing intuitive front-ends in React to architecting robust back-ends with Node.js. Clean, maintainable code is my religion."
+        },
+        {
+            id: 3,
+            icon: <FaPalette className="text-blue-600 dark:text-blue-400" size={20} />,
+            title: "Beyond the Screen",
+            content: "When I'm not coding, you'll find me exploring my creative side through digital painting or staying active with football. I believe a healthy balance fuels innovation and keeps the mind sharp."
+        }
+    ];
+
     return (
-        <div id='about' name="about" className="w-full min-h-screen bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-black text-white">
-            <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
-                <div className="pb-8">
-                    <p className="text-4xl font-bold inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100">About</p>
+        <div id='about' name="about" className="w-full min-h-screen bg-gradient-to-b from-gray-100 to-white dark:from-gray-800 dark:to-black py-20">
+            <div className="max-w-screen-xl p-6 mx-auto flex flex-col justify-center w-full h-full">
+                <div className="pb-12 text-center md:text-left">
+                    <p className="text-4xl font-black inline border-b-4 border-blue-600 dark:border-blue-400 text-gray-900 dark:text-gray-100 uppercase tracking-widest">About Me</p>
                 </div>
 
                 <motion.div
-                     initial={{ opacity: 0, y: 50 }}
+                     initial={{ opacity: 0, y: 30 }}
                      whileInView={{ opacity: 1, y: 0 }}
                      transition={{ duration: 0.8 }}
                      viewport={{ once: true }}
                 >
-                    <p className="text-xl mt-10 text-gray-700 dark:text-gray-300 leading-relaxed">
-                        Hello! I'm Md Fardin Islam Selim, a passionate Junior MERN Stack Developer based in Bangladesh.
-                        I enjoy creating things that live on the internet. My interest in web development started back when I decided to try editing custom Tumblr themes — turns out hacking together HTML & CSS is pretty fun!
-                    </p>
+                    <div className="grid md:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-6">
+                            <h2 className="text-3xl font-bold text-gray-800 dark:text-white leading-tight">
+                                A Developer with a Passion for <span className="text-blue-600 dark:text-blue-400">Problem Solving</span>
+                            </h2>
+                            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed italic border-l-4 border-blue-600 dark:border-blue-400 pl-4 bg-blue-50/30 dark:bg-blue-900/10 py-2">
+                                "Code is not just instructions for computers; it's a tool to solve human problems."
+                            </p>
+                            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                                Back in the day, I started by hacking together HTML/CSS for custom themes, which sparked a lifelong obsession with web technologies. Today, as a MERN Stack Developer, I bridge the gap between imagination and reality by building scalable web applications.
+                            </p>
+                            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                                I identify as a lifelong learner. I enjoy the 'Aha!' moments that come with solving complex logic or refining a UI until it feels just right. My personality is a mix of technical precision and creative flair.
+                            </p>
+                        </div>
 
-                    <br />
-
-                    <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-                         My main focus these days is building accesible, inclusive products and digital experiences for a variety of clients. 
-                         I am constantly learning new technologies and improving my skills to become a better developer.
-                         My goal is to secure a position as a junior web developer where I can contribute to real-world projects and grow my career.
-                    </p>
-
-                    <div className='mt-10'>
-                        <h3 className='text-2xl font-bold text-gray-900 dark:text-white mb-4'>Education</h3>
-                        <div className='bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border-l-4 border-blue-600 dark:border-blue-400'>
-                            <h4 className='text-xl font-bold text-gray-800 dark:text-white'>Diploma in Engineering</h4>
-                            <p className='text-gray-600 dark:text-gray-400'>Computer Science and Technology</p>
-                            <p className='text-gray-500 text-sm mt-2'>2023 - Present</p>
+                        <div className="grid gap-6">
+                            {infoCards.map(({ id, icon, title, content }) => (
+                                <motion.div 
+                                    key={id}
+                                    whileHover={{ scale: 1.02 }}
+                                    className="p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-xl shadow-gray-200/50 dark:shadow-black/50 border border-gray-100 dark:border-gray-800 transition-all"
+                                >
+                                    <div className="flex items-center gap-4 mb-3">
+                                        <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                                            {icon}
+                                        </div>
+                                        <h3 className="text-xl font-bold text-gray-800 dark:text-white uppercase tracking-wider text-sm">{title}</h3>
+                                    </div>
+                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm lg:text-base">
+                                        {content}
+                                    </p>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 
-                    <div className="mt-8">
-                        <a 
-                            href="../assets/resume-of-fardin-islam.pdf"
-                            download={true}
-                            target='_blank'
-                            rel="noreferrer"
-                            className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-3 rounded-md hover:bg-blue-700 dark:hover:bg-blue-600 transition duration-300 shadow-md inline-block font-semibold"
-                        >
-                            Download Resume
-                        </a>
+                    <div className="mt-20 grid lg:grid-cols-2 gap-10">
+                        <div className="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-2xl border border-gray-100 dark:border-gray-800">
+                            <div className="flex items-center gap-4 mb-6">
+                                <FaGraduationCap className="text-blue-600 dark:text-blue-400" size={32} />
+                                <h3 className="text-2xl font-black text-gray-800 dark:text-white uppercase tracking-wide underline decoration-blue-500/30">Education</h3>
+                            </div>
+                            <div className="relative pl-8 border-l-2 border-dashed border-gray-200 dark:border-gray-700 space-y-2">
+                                <div className="absolute w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full -left-[9px] top-2 shadow-lg shadow-blue-500/50"></div>
+                                <h4 className="text-xl font-bold text-gray-800 dark:text-white">Diploma in Engineering</h4>
+                                <p className="text-blue-600 dark:text-blue-400 font-semibold italic">Computer Science and Technology</p>
+                                <p className="text-gray-500 dark:text-gray-400 text-sm font-bold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full w-fit">2023 - Present</p>
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col justify-center items-center lg:items-start gap-8">
+                            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+                                <span className="flex items-center gap-2 px-5 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-bold border border-blue-100 dark:border-blue-800/50">
+                                    <FaFutbol /> Football
+                                </span>
+                                <span className="flex items-center gap-2 px-5 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-bold border border-blue-100 dark:border-blue-800/50">
+                                    <FaPalette /> Painting
+                                </span>
+                                <span className="flex items-center gap-2 px-5 py-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full font-bold border border-blue-100 dark:border-blue-800/50">
+                                    <FaGamepad /> Gaming
+                                </span>
+                            </div>
+
+                            <a 
+                                href="../assets/resume-of-fardin-islam.pdf"
+                                download={true}
+                                target='_blank'
+                                rel="noreferrer"
+                                className="group relative px-10 py-5 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-all shadow-2xl active:scale-95"
+                            >
+                                <span className="relative z-10">Download My Resume</span>
+                                <div className="absolute inset-0 bg-blue-600 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 rounded-2xl opacity-10"></div>
+                            </a>
+                        </div>
                     </div>
                 </motion.div>
             </div>
