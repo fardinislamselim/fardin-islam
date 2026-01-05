@@ -10,38 +10,75 @@ import nextjs from '../assets/skills/nextjs.png';
 import node from '../assets/skills/node.png';
 import reactImage from '../assets/skills/react.png';
 import tailwind from '../assets/skills/tailwind.png';
+import VsCode from '../assets/skills/vscode.webp';
 
 const Skills = () => {
     const categories = [
-        {
-            title: "Frontend Development",
-            skills: [
-                { id: 1, src: html, title: 'HTML', color: 'from-orange-500/20' },
-                { id: 2, src: css, title: 'CSS', color: 'from-blue-500/20' },
-                { id: 3, src: javascript, title: 'JavaScript', color: 'from-yellow-500/20' },
-                { id: 4, src: reactImage, title: 'React', color: 'from-blue-400/20' },
-                { id: 5, src: tailwind, title: 'Tailwind', color: 'from-cyan-400/20' },
-                { id: 6, src: nextjs, title: 'Next JS', color: 'from-gray-400/20' },
-            ]
-        },
-        {
-            title: "Backend Development",
-            skills: [
-                { id: 7, src: node, title: 'Node JS', color: 'from-green-500/20' },
-                { id: 10, isIcon: true, icon: <SiExpress size={40} className="text-[#000000] dark:text-white" />, title: 'Express JS', color: 'from-gray-500/20' },
-                { id: 8, src: mongo, title: 'MongoDB', color: 'from-green-600/20' },
-                { id: 11, isIcon: true, icon: <SiJsonwebtokens size={40} className="text-[#F355FF]" />, title: 'JWT', color: 'from-purple-500/20' },
-            ]
-        },
-        {
-            title: "Tools & Technologies",
-            skills: [
-                { id: 12, isIcon: true, icon: <SiGit size={40} className="text-[#F05032]" />, title: 'Git', color: 'from-orange-600/20' },
-                { id: 9, src: github, title: 'GitHub', color: 'from-purple-500/20' },
-                { id: 13, isIcon: true, icon: <SiPostman size={40} className="text-[#FF6C37]" />, title: 'Postman', color: 'from-orange-400/20' },
-                { id: 14, isIcon: true, icon: <SiVisualstudiocode size={40} className="text-[#007ACC]" />, title: 'VS Code', color: 'from-blue-600/20' },
-            ]
-        }
+      {
+        title: "Frontend Development",
+        skills: [
+          { id: 1, src: html, title: "HTML", color: "from-orange-500/20" },
+          { id: 2, src: css, title: "CSS", color: "from-blue-500/20" },
+          {
+            id: 3,
+            src: javascript,
+            title: "JavaScript",
+            color: "from-yellow-500/20",
+          },
+          { id: 4, src: reactImage, title: "React", color: "from-blue-400/20" },
+          {
+            id: 5,
+            src: tailwind,
+            title: "Tailwind",
+            color: "from-cyan-400/20",
+          },
+          { id: 6, src: nextjs, title: "Next JS", color: "from-gray-400/20" },
+        ],
+      },
+      {
+        title: "Backend Development",
+        skills: [
+          { id: 7, src: node, title: "Node JS", color: "from-green-500/20" },
+          {
+            id: 10,
+            isIcon: true,
+            icon: (
+              <SiExpress size={40} className="text-[#000000] dark:text-white" />
+            ),
+            title: "Express JS",
+            color: "from-gray-500/20",
+          },
+          { id: 8, src: mongo, title: "MongoDB", color: "from-green-600/20" },
+          {
+            id: 11,
+            isIcon: true,
+            icon: <SiJsonwebtokens size={40} className="text-[#F355FF]" />,
+            title: "JWT",
+            color: "from-purple-500/20",
+          },
+        ],
+      },
+      {
+        title: "Tools & Technologies",
+        skills: [
+          {
+            id: 12,
+            isIcon: true,
+            icon: <SiGit size={40} className="text-[#F05032]" />,
+            title: "Git",
+            color: "from-orange-600/20",
+          },
+          { id: 9, src: github, title: "GitHub", color: "from-purple-500/20" },
+          {
+            id: 13,
+            isIcon: true,
+            icon: <SiPostman size={40} className="text-[#FF6C37]" />,
+            title: "Postman",
+            color: "from-orange-400/20",
+          },
+          { id: 14, src: VsCode, title: "VS Code", color: "from-blue-600/20" },
+        ],
+      },
     ];
 
     const container = {

@@ -75,15 +75,33 @@ const About = () => {
 
                     <div className="mt-20 grid lg:grid-cols-2 gap-10">
                         <div className="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-2xl border border-gray-100 dark:border-gray-800">
-                            <div className="flex items-center gap-4 mb-6">
+                            <div className="flex items-center gap-4 mb-8">
                                 <FaGraduationCap className="text-blue-600 dark:text-blue-400" size={32} />
                                 <h3 className="text-2xl font-black text-gray-800 dark:text-white uppercase tracking-wide underline decoration-blue-500/30">Education</h3>
                             </div>
-                            <div className="relative pl-8 border-l-2 border-dashed border-gray-200 dark:border-gray-700 space-y-2">
-                                <div className="absolute w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full -left-[9px] top-2 shadow-lg shadow-blue-500/50"></div>
-                                <h4 className="text-xl font-bold text-gray-800 dark:text-white">Diploma in Engineering</h4>
-                                <p className="text-blue-600 dark:text-blue-400 font-semibold italic">Computer Science and Technology</p>
-                                <p className="text-gray-500 dark:text-gray-400 text-sm font-bold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full w-fit">2023 - Present</p>
+                            
+                            <div className="space-y-12">
+                                {/* Diploma Education */}
+                                <div className="relative pl-8 border-l-2 border-dashed border-blue-600/30 dark:border-blue-400/30 space-y-2">
+                                    <div className="absolute w-4 h-4 bg-blue-600 dark:bg-blue-400 rounded-full -left-[9px] top-1 shadow-lg shadow-blue-500/50"></div>
+                                    <h4 className="text-xl font-bold text-gray-800 dark:text-white">Diploma in Engineering</h4>
+                                    <p className="text-blue-600 dark:text-blue-400 font-semibold italic">Computer Science and Technology</p>
+                                    <p className="text-gray-500 dark:text-gray-400 text-xs font-bold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full w-fit">2023 - Present</p>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                                        Focusing on core computer science principles, data structures, algorithms, and modern web technologies. Actively participating in technical workshops and project-based learning.
+                                    </p>
+                                </div>
+
+                                {/* SSC Education */}
+                                <div className="relative pl-8 border-l-2 border-dashed border-gray-200 dark:border-gray-700 space-y-2">
+                                    <div className="absolute w-4 h-4 bg-gray-300 dark:bg-gray-600 rounded-full -left-[9px] top-1"></div>
+                                    <h4 className="text-xl font-bold text-gray-800 dark:text-white font-black opacity-80 uppercase tracking-tighter">Secondary School Certificate (SSC)</h4>
+                                    <p className="text-gray-600 dark:text-gray-400 font-semibold italic">Science Group</p>
+                                    <p className="text-gray-500 dark:text-gray-400 text-xs font-bold bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full w-fit tracking-widest">Completed</p>
+                                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 leading-relaxed">
+                                        Completed secondary education with a strong foundation in Mathematics and Science, which paved the way for a career in technology.
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
