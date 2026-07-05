@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { SiExpress, SiGit, SiJsonwebtokens, SiPostman } from 'react-icons/si';
+import { SiExpress, SiGit, SiJsonwebtokens, SiMongoose, SiPostgresql, SiPostman, SiPrisma, SiTypescript } from 'react-icons/si';
 
 import css from '../assets/skills/css.png';
 import github from '../assets/skills/github.png';
@@ -17,13 +17,14 @@ const Skills = () => {
       {
         title: "Frontend Development",
         skills: [
-          { id: 1, src: html, title: "HTML", color: "from-orange-500/20" },
-          { id: 2, src: css, title: "CSS", color: "from-blue-500/20" },
+          { id: 1, src: html, title: "HTML", color: "from-orange-500/20", iconSize: "w-11 h-11" },
+          { id: 2, src: css, title: "CSS", color: "from-blue-500/20", iconSize: "w-11 h-11" },
           {
             id: 3,
             src: javascript,
             title: "JavaScript",
             color: "from-yellow-500/20",
+            iconSize: "w-11 h-11",
           },
           { id: 4, src: reactImage, title: "React", color: "from-blue-400/20" },
           {
@@ -31,14 +32,22 @@ const Skills = () => {
             src: tailwind,
             title: "Tailwind",
             color: "from-cyan-400/20",
+            iconSize: "w-11 h-11",
           },
-          { id: 6, src: nextjs, title: "Next JS", color: "from-gray-400/20" },
+          { id: 6, src: nextjs, title: "Next JS", color: "from-gray-400/20", iconSize: "w-11 h-11" },
+          {
+            id: 15,
+            isIcon: true,
+            icon: <SiTypescript size={40} className="text-[#3178C6]" />,
+            title: "TypeScript",
+            color: "from-blue-600/20",
+          },
         ],
       },
       {
         title: "Backend Development",
         skills: [
-          { id: 7, src: node, title: "Node JS", color: "from-green-500/20" },
+          { id: 7, src: node, title: "Node JS", color: "from-green-500/20", iconSize: "w-11 h-11" },
           {
             id: 10,
             isIcon: true,
@@ -49,6 +58,27 @@ const Skills = () => {
             color: "from-gray-500/20",
           },
           { id: 8, src: mongo, title: "MongoDB", color: "from-green-600/20" },
+          {
+            id: 16,
+            isIcon: true,
+            icon: <SiMongoose size={40} className="text-[#880000]" />,
+            title: "Mongoose",
+            color: "from-red-600/20",
+          },
+          {
+            id: 17,
+            isIcon: true,
+            icon: <SiPostgresql size={40} className="text-[#336791]" />,
+            title: "PostgreSQL",
+            color: "from-blue-700/20",
+          },
+          {
+            id: 18,
+            isIcon: true,
+            icon: <SiPrisma size={40} className="text-[#2D3748] dark:text-white" />,
+            title: "Prisma",
+            color: "from-indigo-600/20",
+          },
           {
             id: 11,
             isIcon: true,
@@ -123,19 +153,20 @@ const Skills = () => {
                                         key={skill.id}
                                         variants={item}
                                         whileHover={{ scale: 1.05, translateY: -5 }}
-                                        className="relative group p-6 rounded-2xl bg-white dark:bg-gray-900 shadow-xl dark:shadow-black/20 border border-gray-100 dark:border-gray-800 transition-all duration-300 overflow-hidden flex flex-col items-center justify-center min-h-[160px]"
+                                        className="relative group p-6 rounded-3xl bg-white/90 dark:bg-gray-900/90 shadow-[0_10px_40px_rgba(15,23,42,0.08)] dark:shadow-black/30 border border-gray-200/80 dark:border-gray-800/80 transition-all duration-300 overflow-hidden flex flex-col items-center justify-center min-h-[180px]"
                                     >
-                                        <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                                        <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                                        <div className="absolute -top-8 -right-8 h-20 w-20 rounded-full bg-blue-500/10 blur-2xl group-hover:scale-125 transition-transform duration-500" />
                                         
                                         <div className="relative z-10 flex flex-col items-center">
-                                            {skill.isIcon ? (
-                                                <div className="mb-4 transform group-hover:rotate-12 transition-transform duration-300">
-                                                    {skill.icon}
-                                                </div>
-                                            ) : (
-                                                <img src={skill.src} alt={skill.title} className="w-12 h-12 mx-auto mb-4 transform group-hover:rotate-12 transition-transform duration-300 object-contain" /> 
-                                            )}
-                                            <p className="font-black text-gray-800 dark:text-gray-200 uppercase tracking-tighter text-xs sm:text-sm">{skill.title}</p>
+                                            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 shadow-inner ring-1 ring-gray-200/80 dark:ring-gray-700/80 transform group-hover:rotate-6 group-hover:scale-105 transition-transform duration-300">
+                                                {skill.isIcon ? (
+                                                    skill.icon
+                                                ) : (
+                                                    <img src={skill.src} alt={skill.title} className={`${skill.iconSize || 'w-9 h-9'} object-contain`} /> 
+                                                )}
+                                            </div>
+                                            <p className="font-black text-gray-800 dark:text-gray-200 uppercase tracking-[0.2em] text-[11px] sm:text-sm">{skill.title}</p>
                                         </div>
                                     </motion.div>
                                 ))}

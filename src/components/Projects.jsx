@@ -1,8 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { FaExclamationTriangle, FaExternalLinkAlt, FaGithub, FaLaptopCode, FaRocket, FaServer, FaTimes } from "react-icons/fa";
-import assetverseThumb from "../assets/assetverse-thumb.png";
-import assetverseFull from "../assets/assetverse.png";
+import { FaExclamationTriangle, FaExternalLinkAlt, FaGithub, FaLaptopCode, FaRocket, FaTimes } from "react-icons/fa";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -11,56 +9,57 @@ const Projects = () => {
     {
       id: 1,
       title: "Smart Bills Manager",
-      thumbnail: "https://i.ibb.co.com/99Cqzhc5/Screenshot-2025-12-06-144849.png",
-      fullImage: "https://i.ibb.co.com/99Cqzhc5/Screenshot-2025-12-06-144849.png",
+      thumbnail:
+        "https://i.ibb.co.com/99Cqzhc5/Screenshot-2025-12-06-144849.png",
+      fullImage: "https://i.ibb.co.com/00XD8f2/screenshot1.png",
       description:
         "A full-stack e-commerce application with cart functionality and payment gateway.",
       techStack: ["React", "Express.js", "MongoDB", "Node.js", "Tailwind CSS"],
       demo: "https://smart-bills-manager.web.app/",
       clientCode: "https://github.com/fardinislamselim/smart-bills-client",
-      serverCode: "https://github.com/fardinislamselim/smart-bills-server",
-      challenges: "Implementing complex state management for the shopping cart and ensuring real-time payment status updates were major hurdles. Synchronizing the frontend with Stripe's asynchronous webhooks required rigorous testing.",
-      futurePlans: "Integration of an AI-powered expense forecasting system and adding support for multi-currency transactions."
+      challenges:
+        "Implementing complex state management for the shopping cart and ensuring real-time payment status updates were major hurdles. Synchronizing the frontend with Stripe's asynchronous webhooks required rigorous testing.",
+      futurePlans:
+        "Integration of an AI-powered expense forecasting system and adding support for multi-currency transactions.",
     },
     {
       id: 2,
       title: "Paws Comfort",
-      thumbnail: "https://i.ibb.co.com/hF7FnxFF/Screenshot-2025-12-06-144016.png",
-      fullImage: "https://i.ibb.co.com/hF7FnxFF/Screenshot-2025-12-06-144016.png",
+      thumbnail:
+        "https://i.ibb.co.com/hF7FnxFF/Screenshot-2025-12-06-144016.png",
+      fullImage: "https://i.ibb.co.com/Kc8wp3Gz/screenshot2.png",
       description:
-        "WarmPaws is a modern, fully responsive SPA that provides pet owners with essential winter care resources.",
+        "Smart Bill Management System is a MERN stack web application that helps users securely view, pay, and manage monthly utility bills. It offers an intuitive interface, secure authentication, payment tracking, and downloadable PDF reports, all optimized for a smooth and responsive user experience.",
       techStack: ["React", "Tailwind CSS", "Firebase Auth", "Framer Motion"],
       demo: "https://paws-comfort.netlify.app/",
       clientCode: "https://github.com/fardinislamselim/paws-comfort",
-      challenges: "Designing a UI that was cozy and welcoming while maintaining performance was challenging. Managing several responsive glassmorphic components without causing layout thrashing required careful CSS optimization.",
-      futurePlans: "Addition of a community pet-adoption forum and real-time vet consultation chat feature."
+      challenges:
+        "Key challenges included implementing secure authentication and private routes, restricting bill payments to the current month, handling dynamic CRUD operations with real-time updates, generating accurate PDF reports, and maintaining performance across devices.",
+      futurePlans:
+        "Future improvements include integrating real payment gateways, adding bill reminders and notifications, introducing admin analytics dashboards, and enhancing security with role-based access control and advanced reporting features.",
     },
+
     {
       id: 3,
-      title: "Hero IO",
-      thumbnail: "https://i.ibb.co.com/WWpZdRpC/Screenshot-2025-12-06-145453.png",
-      fullImage: "https://i.ibb.co.com/WWpZdRpC/Screenshot-2025-12-06-145453.png",
-      description:
-        "HERO.IO is a fast, clean, and responsive app download platform for easy browsing and downloading.",
-      techStack: ["React", "Custom CSS", "Axios", "Context API"],
-      demo: "https://heroio-apps.netlify.app/",
-      clientCode: "https://github.com/fardinislamselim/heroio-apps",
-      challenges: "Scraping and verifying high-quality app metadata while keeping the search index fast was the biggest technical challenge. Optimizing image delivery for varying network conditions was also crucial.",
-      futurePlans: "Implementing a desktop app version using Electron and a global user-rating system for verified apps."
-    },
-    {
-      id: 4,
       title: "AssetVerse",
-      thumbnail: assetverseThumb,
-      fullImage: assetverseFull,
+      thumbnail: "https://i.ibb.co.com/h1t5fZRt/image.png",
+      fullImage: "https://i.ibb.co.com/S7wf2Vbq/image.png",
       description:
         "A robust B2B Corporate Asset Management System with role-based dashboards, automated requests, and live analytics.",
-      techStack: ["React", "Firebase", "Node.js", "Stripe", "Recharts", "Tailwind CSS"],
+      techStack: [
+        "React",
+        "Firebase",
+        "Node.js",
+        "Stripe",
+        "Recharts",
+        "Tailwind CSS",
+      ],
       demo: "https://assets-verse.web.app/",
       clientCode: "https://github.com/fardinislamselim/Asset-Verse-client",
-      serverCode: "https://github.com/fardinislamselim/Asset-Verse-server",
-      challenges: "Implementing a multi-tenant role-based access control (RBAC) system for HR Managers and Employees was highly complex. Ensuring data isolation and real-time synchronization of asset requests required architectural precision.",
-      futurePlans: "Integrating AI-driven predictive maintenance for hardware assets and expanding the platform to support multi-regional inventory tracking with localized compliance."
+      challenges:
+        "Implementing a multi-tenant role-based access control (RBAC) system for HR Managers and Employees was highly complex. Ensuring data isolation and real-time synchronization of asset requests required architectural precision.",
+      futurePlans:
+        "Integrating AI-driven predictive maintenance for hardware assets and expanding the platform to support multi-regional inventory tracking with localized compliance.",
     },
   ];
 
@@ -214,7 +213,7 @@ const Projects = () => {
                 <div className="relative w-full h-[55vh] min-h-[400px] overflow-hidden group/header">
                   <div className="absolute inset-0">
                     <img 
-                      src={selectedProject.fullImage} 
+                      src={selectedProject.thumbnail} 
                       alt="" 
                       className="w-full h-full object-cover scale-150 blur-3xl opacity-30 transition-transform duration-[3000ms] group-hover/header:rotate-6" 
                     />
@@ -229,7 +228,7 @@ const Projects = () => {
                       className="relative z-10 w-full max-w-5xl"
                      >
                         <img 
-                          src={selectedProject.fullImage} 
+                          src={selectedProject.thumbnail} 
                           alt={selectedProject.title} 
                           className="w-full h-auto max-h-[40vh] object-contain rounded-[2rem] shadow-[0_30px_80px_rgba(0,0,0,0.8)] border border-white/10 transform hover:scale-[1.01] transition-transform duration-500"
                         />
@@ -361,22 +360,11 @@ const Projects = () => {
                                 <FaRocket /> Launch Project
                               </a>
                               
-                              <div className="grid grid-cols-2 gap-4">
+                              <div className="grid grid-cols-1">
                                 <a href={selectedProject.clientCode} target="_blank" rel="noreferrer" className="flex flex-col items-center justify-center gap-2 py-6 bg-white/10 backdrop-blur-md rounded-3xl font-black uppercase tracking-tighter text-[10px] hover:bg-white/20 transition-all border border-white/10 group">
                                   <FaLaptopCode size={24} className="group-hover:scale-110 transition-transform" />
                                   GitHub Repository (Client)
                                 </a>
-                                {selectedProject.serverCode ? (
-                                  <a href={selectedProject.serverCode} target="_blank" rel="noreferrer" className="flex flex-col items-center justify-center gap-2 py-6 bg-white/10 backdrop-blur-md rounded-3xl font-black uppercase tracking-tighter text-[10px] hover:bg-white/20 transition-all border border-white/10 group">
-                                    <FaServer size={24} className="group-hover:scale-110 transition-transform" />
-                                    Back End
-                                  </a>
-                                ) : (
-                                  <div className="flex flex-col items-center justify-center gap-2 py-6 bg-white/5 rounded-3xl font-black uppercase tracking-tighter text-[10px] opacity-40">
-                                    <FaServer size={24} />
-                                    Closed Repo
-                                  </div>
-                                )}
                               </div>
                            </div>
                        </div>

@@ -7,40 +7,55 @@ const Contact = () => {
     const form = useRef();
     const [status, setStatus] = useState(null); // 'sending' | 'success' | 'error' | null
 
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || '';
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '';
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
+    const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'fardinislamselim@gmail.com';
+    const contactPhone = import.meta.env.VITE_CONTACT_PHONE || '+880 1333-954736';
+    const contactWhatsApp = import.meta.env.VITE_CONTACT_WHATSAPP || '+880 1333-954736';
+
     const contactInfo = [
-        {
-            id: 1,
-            icon: <FaEnvelope className="text-blue-600 dark:text-blue-400" size={24} />,
-            title: "Email Me",
-            value: "fardinislamselim@gmail.com",
-            link: "mailto:fardinislamselim@gmail.com"
-        },
-        {
-            id: 2,
-            icon: <FaPhone className="text-blue-600 dark:text-blue-400" size={24} />,
-            title: "Call Me",
-            value: "+880 1836-398363",
-            link: "tel:+8801836398363"
-        },
-        {
-            id: 3,
-            icon: <FaWhatsapp className="text-blue-600 dark:text-blue-400" size={24} />,
-            title: "WhatsApp",
-            value: "+880 1836-398363",
-            link: "https://wa.me/8801836398363"
-        }
+      {
+        id: 1,
+        icon: (
+          <FaEnvelope className="text-blue-600 dark:text-blue-400" size={24} />
+        ),
+        title: "Email Me",
+        value: contactEmail,
+        link: `mailto:${contactEmail}`,
+      },
+      {
+        id: 2,
+        icon: (
+          <FaPhone className="text-blue-600 dark:text-blue-400" size={24} />
+        ),
+        title: "Call Me",
+        value: contactPhone,
+        link: `tel:${contactPhone.replace(/\D/g, '')}`,
+      },
+      {
+        id: 3,
+        icon: (
+          <FaWhatsapp className="text-blue-600 dark:text-blue-400" size={24} />
+        ),
+        title: "WhatsApp",
+        value: contactWhatsApp,
+        link: `https://wa.me/${contactWhatsApp.replace(/\D/g, '')}`,
+      },
     ];
 
     const sendEmail = (e) => {
         e.preventDefault();
         setStatus('sending');
 
-        // IMPORTANT: Replace these with your actual IDs from EmailJS
-        const SERVICE_ID = "service_myqnlln"; // Replace with your Service ID
-        const TEMPLATE_ID = "template_x9ehwp7"; // Replace with your Template ID
-        const PUBLIC_KEY = "JRO3fTa2bwPLoWZot"; // Replace with your Public Key
+        if (!serviceId || !templateId || !publicKey) {
+            setStatus('error');
+            console.error('EmailJS environment variables are missing.');
+            setTimeout(() => setStatus(null), 5000);
+            return;
+        }
 
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+        emailjs.sendForm(serviceId, templateId, form.current, publicKey)
             .then((result) => {
                 setStatus('success');
                 e.target.reset();
